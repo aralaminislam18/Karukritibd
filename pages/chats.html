@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>কারুকৃতি সহায়ক — চ্যাট</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/chats.css?v=2">
+</head>
+<body>
+
+<div class="cb-header">
+  <div class="cb-header-avatar">
+    <img src="https://i.supaimg.com/606b7b58-c162-4705-9479-19885bc7cb5c/8ec7f67d-e384-4165-bc92-0b45e31358fc.png" width="50" height="50" alt="">
+  </div>
+  <div>
+    <div class="cb-header-title" id="cbTitle">কারুকৃতি সহায়ক</div>
+    <div class="cb-header-sub" id="cbSub">সাধারণত সাথে সাথেই উত্তর দেয়</div>
+  </div>
+  <div class="cb-header-status"><span class="cb-dot"></span> <span id="cbStatusText">অনলাইন</span></div>
+</div>
+
+<div class="cb-messages" id="cbMessages"></div>
+<div class="cb-quick-replies" id="cbQuickReplies"></div>
+
+<div class="cb-input-row">
+  <input type="text" class="cb-input" id="cbInput" placeholder="লিখুন..." autocomplete="off">
+  <button class="cb-send" id="cbSend">➤</button>
+</div>
+
+<script type="module" src="../js/chats.js?v=2"></script>
+</body>
+</html>
