@@ -45,11 +45,17 @@ input, select, textarea { font-family: inherit; }
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
-  padding: 14px 16px 30px;
+  padding: 14px 16px 22px;
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  /* কানের ডিজাইনের মতো দুই পাশ মসৃণভাবে বাঁকিয়ে উপরে তোলা শেপ */
-  clip-path: url(#headerCurve);
+  /* কানের ডিজাইনের মতো দুই পাশ বাঁকিয়ে উপরে তোলা শেপ */
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% calc(100% - 18px),
+    92% 100%,
+    8% 100%,
+    0% calc(100% - 18px)
+  );
 }
 
 .logo-wrap {
@@ -329,10 +335,17 @@ input, select, textarea { font-family: inherit; }
   background: var(--surface);
   display: flex;
   box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-  padding-top: 26px;
+  padding-top: 18px;
   padding-bottom: env(safe-area-inset-bottom);
-  /* হেডারের মতো একই কানের ডিজাইন, উপরের কোণা মসৃণভাবে বাঁকানো */
-  clip-path: url(#bottomNavCurve);
+  /* হেডারের মতো একই কানের ডিজাইন, উপরের কোণা বাঁকানো */
+  clip-path: polygon(
+    0% 18px,
+    8% 0%,
+    92% 0%,
+    100% 18px,
+    100% 100%,
+    0% 100%
+  );
 }
 .nav-item {
   flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
