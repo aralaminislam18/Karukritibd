@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>কারুকৃতি-Karukriti</title>
+<link rel="stylesheet" href="../css/main.css?v=2">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .cart-item { display: flex; gap: 12px; background: var(--surface); border-radius: 14px; padding: 12px; margin-bottom: 10px; box-shadow: var(--shadow-sm); align-items: center; }
+  .cart-item img { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; background: #eee; flex-shrink: 0; }
+  .cart-item-info { flex: 1; min-width: 0; }
+  .cart-item-name { font-size: 13.5px; font-weight: 600; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cart-item-price { font-size: 14px; font-weight: 800; color: var(--primary-dark); }
+  .cart-qty-stepper { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .cart-qty-stepper button { width: 30px; height: 30px; font-size: 15px; font-weight: 700; background: var(--bg); }
+  .cart-qty-stepper span { width: 30px; text-align: center; font-weight: 700; font-size: 13px; }
+  .cart-remove { color: var(--danger); font-size: 18px; padding: 6px; flex-shrink: 0; }
+  .summary-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+  .summary-row.total { font-size: 16px; font-weight: 800; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="flex items-center gap-12">
+    <a href="../index.html" class="icon-btn" style="width:auto;height:auto;background:none;">←</a>
+    <span class="logo-text">আমার কার্ট</span>
+  </div>
+</header>
+
+<div class="page-pad" id="cartContent">
+  <div class="spinner"></div>
+</div>
+
+<nav class="bottom-nav">
+  <a href="../index.html" class="nav-item"><span class="nav-icon">🏠</span><span>হোম</span></a>
+  <a href="orders.html" class="nav-item"><span class="nav-icon">📋</span><span>অর্ডার</span></a>
+  <a href="cart.html" class="nav-item active"><span class="nav-icon">🛒</span><span>কার্ট</span></a>
+</nav>
+
+<script type="module" src="../js/cart.js?v=2"></script>
+</body>
+</html>

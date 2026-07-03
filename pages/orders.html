@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>কারুকৃতি-Karukriti</title>
+<link rel="stylesheet" href="../css/main.css?v=2">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .order-card { background: var(--surface); border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: var(--shadow-sm); }
+  .order-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .order-id { font-size: 12px; color: var(--text-muted); }
+  .order-items-line { font-size: 13px; color: #444; margin-bottom: 6px; }
+  .order-total-line { font-weight: 800; font-size: 14px; color: var(--primary-dark); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="flex items-center gap-12">
+    <a href="../index.html" class="icon-btn" style="width:auto;height:auto;background:none;">←</a>
+    <span class="logo-text">আমার অর্ডার</span>
+  </div>
+</header>
+
+<div class="page-pad">
+  <div class="surface-card">
+    <label class="form-label">অর্ডার দেখতে ফোন নাম্বার দিন</label>
+    <div class="flex gap-8 mt-8">
+      <input type="tel" class="form-input" id="phoneSearch" placeholder="01XXXXXXXXX">
+      <button class="btn btn-primary" id="searchBtn">খুঁজুন</button>
+    </div>
+  </div>
+  <div id="ordersList" class="mt-16"></div>
+</div>
+
+<nav class="bottom-nav">
+  <a href="../index.html" class="nav-item"><span class="nav-icon">🏠</span><span>হোম</span></a>
+  <a href="orders.html" class="nav-item active"><span class="nav-icon">📋</span><span>অর্ডার</span></a>
+  <a href="cart.html" class="nav-item"><span class="nav-icon">🛒</span><span>কার্ট</span></a>
+</nav>
+
+<script type="module" src="../js/orders.js?v=2"></script>
+</body>
+</html>

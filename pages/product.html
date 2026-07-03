@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>প্রোডাক্ট বিস্তারিত কারুকৃতি-Karukriti,</title>
+<link rel="stylesheet" href="../css/main.css?v=2">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .pd-gallery { position: relative; width: 100%; aspect-ratio: 1; background: #eee; overflow: hidden; }
+  .pd-gallery-track { display: flex; height: 100%; transition: transform 0.35s cubic-bezier(0.65,0,0.35,1); }
+  .pd-gallery-slide { min-width: 100%; height: 100%; }
+  .pd-gallery-slide img { width: 100%; height: 100%; object-fit: cover; }
+  .pd-thumbs { display: flex; gap: 8px; padding: 12px 16px; overflow-x: auto; }
+  .pd-thumb { width: 56px; height: 56px; border-radius: 10px; overflow: hidden; border: 2px solid transparent; flex-shrink: 0; box-shadow: var(--shadow-sm); }
+  .pd-thumb.active { border-color: var(--primary); }
+  .pd-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .pd-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; padding: 14px; }
+  .pd-back { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.9); display:flex; align-items:center; justify-content:center; font-size: 18px; box-shadow: var(--shadow-md); }
+  .pd-body { padding: 16px; padding-bottom: 100px; }
+  .pd-cat-tag { display: inline-block; background: rgba(31,122,84,0.1); color: var(--primary); font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 8px; margin-bottom: 8px; }
+  .pd-name { font-size: 20px; font-weight: 800; line-height: 1.4; margin-bottom: 8px; }
+  .pd-price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+  .pd-price-now { font-size: 24px; font-weight: 800; color: var(--primary-dark); }
+  .pd-price-old { font-size: 15px; color: var(--text-muted); text-decoration: line-through; }
+  .pd-desc-title { font-weight: 700; font-size: 15px; margin: 18px 0 8px; }
+  .pd-desc { font-size: 14px; line-height: 1.7; color: #444; }
+  .qty-stepper { display: flex; align-items: center; gap: 0; border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .qty-stepper button { width: 40px; height: 40px; font-size: 18px; font-weight: 700; background: var(--bg); }
+  .qty-stepper span { width: 40px; text-align: center; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="pd-header">
+  <a href="../index.html" class="pd-back">←</a>
+</div>
+
+<div id="productContent">
+  <div class="spinner" style="margin-top:120px;"></div>
+</div>
+
+<script type="module" src="../js/product.js?v=2"></script>
+</body>
+</html>
