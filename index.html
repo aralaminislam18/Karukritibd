@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>কারুকৃতি-Karukriti</title>
+<link rel="stylesheet" href="css/main.css?v=2">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Promo Popup (অ্যাডমিন থেকে অন/অফ করা যায়) -->
+<div class="promo-overlay" id="promoOverlay">
+  <div class="promo-box">
+    <img id="promoImage" src="" alt="প্রোমো অফার">
+    <div class="promo-title" id="promoTitleText"></div>
+    <button class="promo-close" id="promoCloseBtn" aria-label="বন্ধ করুন">✕</button>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="logo-wrap" id="logoTap">
+    <img src="https://i.supaimg.com/606b7b58-c162-4705-9479-19885bc7cb5c/8ec7f67d-e384-4165-bc92-0b45e31358fc.png" width="50" height="50">
+    <span class="logo-text" id="siteNameLabel"> কারুকৃতি </span>
+  </div>
+  <div class="header-icons">
+    <a href="pages/orders.html" class="icon-btn" aria-label="আমার অর্ডার"><svg viewBox="0 0 32 32" width="24" height="24">
+  <rect x="6" y="5.5" width="20" height="24" rx="2.2" fill="#fff" stroke="var(--primary-dark)" stroke-width="1.6"/>
+  <rect x="11.5" y="3" width="9" height="5" rx="1.4" fill="var(--accent)" stroke="var(--primary-dark)" stroke-width="1.4"/>
+  <rect x="9.5" y="12.5" width="13" height="1.8" rx="0.9" fill="var(--border)"/>
+  <rect x="9.5" y="17" width="13" height="1.8" rx="0.9" fill="var(--border)"/>
+  <rect x="9.5" y="21.5" width="8.5" height="1.8" rx="0.9" fill="var(--border)"/>
+  <path d="M18.5 22.3 l2.2 2.2 l4.3-4.6" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></a>
+    <a href="pages/chats.html" class="icon-btn" aria-label="কার্ট">
+ <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 4 h16 a2 2 0 0 1 2 2 v9 a2 2 0 0 1-2 2 H9 l-4.5 4 V17 H4 a2 2 0 0 1-2-2 V6 a2 2 0 0 1 2-2 Z"
+        fill="var(--accent-light, #eaf3ff)" stroke="var(--primary-dark, #1a2b4c)" stroke-width="1.6" stroke-linejoin="round"/>
+  <circle cx="8" cy="10.5" r="1.15" fill="var(--primary-dark, #1a2b4c)"/>
+  <circle cx="12" cy="10.5" r="1.15" fill="var(--primary-dark, #1a2b4c)"/>
+  <circle cx="16" cy="10.5" r="1.15" fill="var(--primary-dark, #1a2b4c)"/>
+</svg>
+      <span class="cart-badge" style="display:none;">0</span>
+    </a>
+  </div>
+</header>
+
+<!-- Banner Slider -->
+<div class="banner-slider" id="bannerSlider">
+  <div class="banner-track" id="bannerTrack"></div>
+  <div class="banner-dots" id="bannerDots"></div>
+</div>
+
+<!-- Categories -->
+<div class="category-scroll" id="categoryScroll"></div>
+
+<!-- Products -->
+<div class="section-heading">
+  <h2 id="productsHeading">সব প্রোডাক্ট</h2>
+</div>
+<div class="product-grid" id="productGrid">
+  <div class="spinner"></div>
+</div>
+
+<!-- Bottom Nav -->
+<nav class="bottom-nav">
+  <a href="index.html" class="nav-item active">
+    <span class="nav-icon"><!-- হোম আইকন -->
+<svg viewBox="0 0 32 32" width="24" height="24">
+  <path d="M16 3.5 L29 14.5 V27 a1.5 1.5 0 0 1-1.5 1.5 H4.5 A1.5 1.5 0 0 1 3 27 V14.5 Z" fill="var(--accent-light)" stroke="var(--primary-dark)" stroke-width="1.6" stroke-linejoin="round"/>
+  <rect x="6.5" y="15.5" width="19" height="12" rx="1.2" fill="#fff" stroke="var(--primary-dark)" stroke-width="1.4"/>
+  <rect x="13.2" y="19.5" width="5.6" height="8" rx="0.8" fill="var(--primary)" stroke="var(--primary-dark)" stroke-width="1.2"/>
+  <circle cx="17.6" cy="23.4" r="0.65" fill="var(--accent-light)"/>
+  <rect x="9" y="18.5" width="2.6" height="2.6" rx="0.4" fill="var(--accent)"/>
+  <rect x="20.4" y="18.5" width="2.6" height="2.6" rx="0.4" fill="var(--accent)"/>
+  <path d="M13 4.6 h3.2 v3.6 h-3.2 z" fill="var(--primary-dark)"/>
+</svg>
+
+<!-- অর্ডার আইকন -->
+</span><span>হোম</span>
+  </a>
+  <a href="pages/orders.html" class="nav-item">
+    <span class="nav-icon"><svg viewBox="0 0 32 32" width="24" height="24">
+  <rect x="6" y="5.5" width="20" height="24" rx="2.2" fill="#fff" stroke="var(--primary-dark)" stroke-width="1.6"/>
+  <rect x="11.5" y="3" width="9" height="5" rx="1.4" fill="var(--accent)" stroke="var(--primary-dark)" stroke-width="1.4"/>
+  <rect x="9.5" y="12.5" width="13" height="1.8" rx="0.9" fill="var(--border)"/>
+  <rect x="9.5" y="17" width="13" height="1.8" rx="0.9" fill="var(--border)"/>
+  <rect x="9.5" y="21.5" width="8.5" height="1.8" rx="0.9" fill="var(--border)"/>
+  <path d="M18.5 22.3 l2.2 2.2 l4.3-4.6" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></span><span>অর্ডার</span>
+  </a>
+  <a href="pages/cart.html" class="nav-item">
+    <span class="nav-icon"><svg viewBox="0 0 32 32" width="24" height="24">
+  <path d="M4 5 h3.6 l1.1 4" fill="none" stroke="var(--primary-dark)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.7 9 h19.3 l-2.6 10.4 a2 2 0 0 1-1.94 1.5 H12.3 a2 2 0 0 1-1.94-1.52 Z" fill="var(--accent-light)" stroke="var(--primary-dark)" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M11.6 12.5 h16" stroke="var(--primary-dark)" stroke-width="1.1" opacity="0.35"/>
+  <circle cx="14" cy="26.5" r="2.1" fill="var(--primary-dark)"/>
+  <circle cx="24" cy="26.5" r="2.1" fill="var(--primary-dark)"/>
+  <circle cx="14" cy="26.5" r="0.7" fill="#fff"/>
+  <circle cx="24" cy="26.5" r="0.7" fill="#fff"/>
+</svg></span><span>কার্ট</span>
+  </a>
+</nav>
+
+<!-- Admin secret login modal -->
+<div class="modal-overlay center" id="adminModal">
+  <div class="modal-sheet" style="max-width:320px; text-align:center;">
+    <div class="modal-handle"></div>
+    <div style="font-size:32px; margin-bottom:10px;">🔒</div>
+    <div class="modal-title">এডমিন লগইন</div>
+    <p class="text-muted" style="font-size:13px; margin-bottom:16px;">পাসওয়ার্ড দিন</p>
+    <input type="password" class="form-input pin-input" id="adminPinInput" maxlength="10" placeholder="••••••" style="text-align:center; letter-spacing:6px;">
+    <div class="login-error" id="adminPinError"></div>
+    <div class="flex gap-8" style="margin-top:10px;">
+      <button class="btn btn-outline btn-block" id="adminCancelBtn">বাতিল</button>
+      <button class="btn btn-primary btn-block" id="adminSubmitBtn">প্রবেশ</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="js/home.js?v=2"></script>
+</body>
+</html>
