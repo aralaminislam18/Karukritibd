@@ -14,6 +14,7 @@ let currentBannerIndex = 0;
 let allProducts = {};
 let allCategories = {};
 let activeCategory = "all";
+let searchQuery = "";
 
 // ---------- Admin secret tap ----------
 const logoTap = document.getElementById("logoTap");
@@ -54,6 +55,39 @@ document.getElementById("adminSubmitBtn").addEventListener("click", trySubmitAdm
 adminPinInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") trySubmitAdminPin();
 });
+
+// ---------- Product Search (ক্লিকে বড় হবে, ছাড়ার পর ছোট হয়ে যাবে) ----------
+const headerSearch = document.getElementById("headerSearch");
+const productSearchInput = document.getElementById("productSearchInput");
+const searchToggleBtn = document.getElementById("searchToggleBtn");
+
+if (headerSearch && productSearchInput && searchToggleBtn) {
+  searchToggleBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isExpanded = headerSearch.classList.contains("expanded");
+    if (!isExpanded) {
+      headerSearch.classList.add("expanded");
+      productSearchInput.focus();
+    } else if (productSearchInput.value.trim() === "") {
+      headerSearch.classList.remove("expanded");
+    } else {
+      productSearchInput.focus();
+    }
+  });
+
+  productSearchInput.addEventListener("input", (e) => {
+    searchQuery = e.target.value;
+    renderProducts();
+  });
+
+  productSearchInput.addEventListener("blur", () => {
+    setTimeout(() => {
+      if (productSearchInput.value.trim() === "") {
+        headerSearch.classList.remove("expanded");
+      }
+    }, 150);
+  });
+}
 
 // ---------- Banner Slider ----------
 function renderBanners(banners) {
@@ -111,6 +145,41 @@ function renderCategories(categories) {
   });
 }
 
+// ---------- Search matching (৪০% অক্ষর মিল হলে সাজেশনে আসবে) ----------
+function normalizeText(str) {
+  return (str || "").toString().toLowerCase().trim();
+}
+
+// Query-এর কতটুকু অংশ target-এর ভেতরে ধারাবাহিকভাবে (substring হিসেবে) পাওয়া যাচ্ছে
+// তার ভিত্তিতে মিলের শতাংশ বের করে। খুব ছোট query দিয়েও কাজ করে।
+function matchPercentage(query, target) {
+  query = normalizeText(query);
+  target = normalizeText(target);
+  if (!query) return 100;
+  if (!target) return 0;
+
+  // সরাসরি substring হিসেবে থাকলে বেশি স্কোর
+  if (target.includes(query)) return 100;
+
+  // অক্ষর ধরে ধরে মিলানো (query-এর কতগুলো ক্যারেক্টার target-এ ক্রমানুসারে পাওয়া যায়)
+  let qi = 0;
+  let matchedChars = 0;
+  for (let ti = 0; ti < target.length && qi < query.length; ti++) {
+    if (target[ti] === query[qi]) {
+      matchedChars++;
+      qi++;
+    }
+  }
+  return (matchedChars / query.length) * 100;
+}
+
+function productMatchesSearch(product, query) {
+  if (!query) return true;
+  const nameScore = matchPercentage(query, product.name);
+  const idScore = matchPercentage(query, product.id);
+  return Math.max(nameScore, idScore) >= 40;
+}
+
 // ---------- Products ----------
 function renderProducts() {
   const grid = document.getElementById("productGrid");
@@ -118,6 +187,10 @@ function renderProducts() {
 
   if (activeCategory !== "all") {
     products = products.filter(p => p.category === activeCategory);
+  }
+
+  if (searchQuery) {
+    products = products.filter(p => productMatchesSearch(p, searchQuery));
   }
 
   if (products.length === 0) {
