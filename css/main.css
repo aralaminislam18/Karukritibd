@@ -45,7 +45,7 @@ input, select, textarea { font-family: inherit; }
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
-  padding: 14px 16px 26px;
+  padding: 14px 16px 30px;
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
   /* কানের ডিজাইনের মতো দুই পাশ মসৃণভাবে বাঁকিয়ে উপরে তোলা শেপ */
@@ -329,7 +329,7 @@ input, select, textarea { font-family: inherit; }
   background: var(--surface);
   display: flex;
   box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-  padding-top: 22px;
+  padding-top: 26px;
   padding-bottom: env(safe-area-inset-bottom);
   /* হেডারের মতো একই কানের ডিজাইন, উপরের কোণা মসৃণভাবে বাঁকানো */
   clip-path: url(#bottomNavCurve);
