@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>এডমিন প্যানেল — ShopBD</title>
+<link rel="stylesheet" href="../css/main.css?v=2">
+<link rel="stylesheet" href="../css/admin.css?v=2">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+<!-- Login Screen -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="lock-icon">🔒</div>
+    <h2>এডমিন প্যানেল</h2>
+    <p>প্রবেশ করতে পাসওয়ার্ড দিন</p>
+    <input type="password" class="pin-input" id="loginPin" maxlength="10" placeholder="••••••">
+    <div class="login-error" id="loginError"></div>
+    <button class="btn btn-primary btn-block" id="loginBtn">প্রবেশ করুন</button>
+  </div>
+</div>
+
+<!-- Admin Dashboard (hidden until authenticated) -->
+<div id="adminDashboard" style="display:none;">
+  <div class="admin-header">
+    <h1>⚙️ এডমিন প্যানেল</h1>
+    <button class="admin-logout" id="logoutBtn">লগআউট</button>
+  </div>
+
+  <div class="admin-tabs">
+    <button class="admin-tab active" data-tab="dashboard">ড্যাশবোর্ড</button>
+    <button class="admin-tab" data-tab="products">প্রোডাক্ট</button>
+    <button class="admin-tab" data-tab="categories">ক্যাটাগরি</button>
+    <button class="admin-tab" data-tab="banners">ব্যানার</button>
+    <button class="admin-tab" data-tab="orders">অর্ডার</button>
+    <button class="admin-tab" data-tab="settings">সেটিংস</button>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="admin-panel active" id="panel-dashboard">
+    <div class="stat-grid" id="statGrid">
+      <div class="stat-box"><div class="stat-num">—</div><div class="stat-label">মোট অর্ডার</div></div>
+      <div class="stat-box"><div class="stat-num">—</div><div class="stat-label">পেন্ডিং অর্ডার</div></div>
+      <div class="stat-box"><div class="stat-num">—</div><div class="stat-label">মোট প্রোডাক্ট</div></div>
+      <div class="stat-box"><div class="stat-num">—</div><div class="stat-label">মোট বিক্রি</div></div>
+    </div>
+    <div class="admin-card" style="display:block;">
+      <div style="font-weight:700; margin-bottom:6px;">সাম্প্রতিক অর্ডার</div>
+      <div id="recentOrders" class="text-muted" style="font-size:13px;">লোড হচ্ছে...</div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="admin-panel" id="panel-products">
+    <div id="productsList"><div class="spinner"></div></div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="admin-panel" id="panel-categories">
+    <div id="categoriesList"><div class="spinner"></div></div>
+  </div>
+
+  <!-- BANNERS -->
+  <div class="admin-panel" id="panel-banners">
+    <div id="bannersList"><div class="spinner"></div></div>
+  </div>
+
+  <!-- ORDERS -->
+  <div class="admin-panel" id="panel-orders">
+    <div id="ordersFilterBar" class="flex gap-8" style="margin-bottom:12px; overflow-x:auto;">
+      <button class="admin-tab active" data-status="all">সব</button>
+      <button class="admin-tab" data-status="pending">পেন্ডিং</button>
+      <button class="admin-tab" data-status="confirmed">কনফার্ম</button>
+      <button class="admin-tab" data-status="delivered">ডেলিভার</button>
+    </div>
+    <div id="ordersList"><div class="spinner"></div></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="admin-panel" id="panel-settings">
+    <div class="admin-card" style="display:block;">
+      <div style="font-weight:700; margin-bottom:10px;">পেমেন্ট পদ্ধতি</div>
+      <div class="toggle-row">
+        <div><div style="font-weight:600; font-size:14px;">ক্যাশ অন ডেলিভারি (COD)</div><div class="text-muted" style="font-size:12px;">গ্রাহক প্রোডাক্ট পেয়ে টাকা দেবে</div></div>
+        <div class="toggle-switch" id="toggleCod"></div>
+      </div>
+      <div class="toggle-row">
+        <div><div style="font-weight:600; font-size:14px;">অনলাইন পেমেন্ট</div><div class="text-muted" style="font-size:12px;">বিকাশ/নগদ ট্রানজেকশন আইডি</div></div>
+        <div class="toggle-switch" id="toggleOnline"></div>
+      </div>
+    </div>
+
+    <div class="admin-card mt-16" style="display:block;">
+      <div style="font-weight:700; margin-bottom:10px;">পেমেন্ট নাম্বার</div>
+      <div class="form-group">
+        <label class="form-label">বিকাশ/নগদ নাম্বার</label>
+        <input type="text" class="form-input" id="bkashNumberInput" placeholder="01700-000000">
+      </div>
+      <button class="btn btn-primary btn-sm" id="saveNumberBtn">সেভ করুন</button>
+    </div>
+
+    <div class="admin-card mt-16" style="display:block;">
+      <div style="font-weight:700; margin-bottom:10px;">সাইটের নাম</div>
+      <div class="form-group" style="margin-bottom:10px;">
+        <input type="text" class="form-input" id="siteNameInput" placeholder="ShopBD">
+      </div>
+      <button class="btn btn-primary btn-sm" id="saveSiteNameBtn">সেভ করুন</button>
+    </div>
+
+    <div class="admin-card mt-16" style="display:block;">
+      <div style="font-weight:700; margin-bottom:10px;">প্রোমো পপআপ (হোমপেজ)</div>
+      <div class="toggle-row">
+        <div><div style="font-weight:600; font-size:14px;">চালু/বন্ধ</div><div class="text-muted" style="font-size:12px;">অন করলে হোমপেজ লোড হওয়ার সাথে সাথে পপআপ দেখাবে</div></div>
+        <div class="toggle-switch" id="togglePromo"></div>
+      </div>
+      <div class="form-group mt-8">
+        <label class="form-label">টাইটেল (ছবির উপরে দেখাবে)</label>
+        <input type="text" class="form-input" id="promoTitleInput" placeholder="যেমন: ঈদ স্পেশাল অফার!">
+      </div>
+      <div class="form-group">
+        <label class="form-label">ছবির লিংক</label>
+        <input type="text" class="form-input" id="promoImageInput" placeholder="https://...">
+      </div>
+      <div class="text-muted" style="font-size:11.5px; margin-bottom:10px;">ছবি যে সাইজের/অনুপাতের হবে, পপআপ ঠিক সেই সাইজেই দেখাবে।</div>
+      <button class="btn btn-primary btn-sm" id="savePromoBtn">সেভ করুন</button>
+    </div>
+  </div>
+</div>
+
+<button class="fab-add" id="fabAdd" style="display:none;">+</button>
+
+<!-- Product Add/Edit Modal -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="productModalTitle">নতুন প্রোডাক্ট</div>
+    <form id="productForm" class="mt-16">
+      <input type="hidden" id="productId">
+      <div class="form-group">
+        <label class="form-label">প্রোডাক্টের নাম *</label>
+        <input type="text" class="form-input" id="pName" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ক্যাটাগরি *</label>
+        <select class="form-select" id="pCategory" required></select>
+      </div>
+      <div class="flex gap-12">
+        <div class="form-group" style="flex:1;">
+          <label class="form-label">দাম (৳) *</label>
+          <input type="number" class="form-input" id="pPrice" required min="0">
+        </div>
+        <div class="form-group" style="flex:1;">
+          <label class="form-label">পুরাতন দাম (৳)</label>
+          <input type="number" class="form-input" id="pOldPrice" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">বিবরণ</label>
+        <textarea class="form-textarea" id="pDescription"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ছবির লিংক (সর্বোচ্চ ৪টি)</label>
+        <div id="imageInputs"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label flex items-center" style="justify-content:space-between;">
+          স্টকে আছে
+          <div class="toggle-switch on" id="pStockToggle"></div>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">সেভ করুন</button>
+    </form>
+  </div>
+</div>
+
+<!-- Category Add Modal -->
+<div class="modal-overlay center" id="categoryModal">
+  <div class="modal-sheet" style="max-width:360px;">
+    <div class="modal-handle"></div>
+    <div class="modal-title">নতুন ক্যাটাগরি</div>
+    <form id="categoryForm" class="mt-16">
+      <div class="form-group">
+        <label class="form-label">ক্যাটাগরির নাম *</label>
+        <input type="text" class="form-input" id="catName" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">আইকন</label>
+        <textarea class="form-textarea" id="catIcon" placeholder="ইমোজি (🏷️) / ছবির লিংক (https://...) / HTML বা SVG কোড" style="min-height:64px;"></textarea>
+        <div class="text-muted" style="font-size:11.5px; margin-top:4px;">ইমোজি, ছবির লিংক, বা HTML/SVG কোড — যেকোনো একটা দিন। মাপ ফিক্সড থাকবে।</div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">যোগ করুন</button>
+    </form>
+  </div>
+</div>
+
+<!-- Banner Add Modal -->
+<div class="modal-overlay center" id="bannerModal">
+  <div class="modal-sheet" style="max-width:400px;">
+    <div class="modal-handle"></div>
+    <div class="modal-title">নতুন ব্যানার</div>
+    <form id="bannerForm" class="mt-16">
+      <div class="form-group">
+        <label class="form-label">ছবির লিংক (16:9) *</label>
+        <input type="text" class="form-input" id="bannerImageUrl" required placeholder="https://...">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">যোগ করুন</button>
+    </form>
+  </div>
+</div>
+
+<!-- Order Detail Modal -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">অর্ডার বিস্তারিত</div>
+    <div id="orderDetailContent" class="mt-16"></div>
+  </div>
+</div>
+
+<script type="module" src="../js/admin.js?v=2"></script>
+</body>
+</html>
